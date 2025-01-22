@@ -8,11 +8,22 @@ services:
   build_command: |
     npm ci
     npm run build
-  run_command: npm run start
+  run_command: npm run preview
   environment_slug: node-js
   instance_size_slug: basic-xxs
   instance_count: 1
   http_port: 8080
+  static_sites:
+  - name: client
+    environment_slug: node-js
+    github:
+      repo: AyltonJunior/monitor-dashboard
+      branch: master
+      deploy_on_push: true
+    output_dir: dist
+    catchall_document: index.html
+    routes:
+      - path: /
   routes:
   - path: /
   envs:
