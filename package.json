@@ -8,9 +8,10 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "cp public/index.html . && vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview --host 0.0.0.0 --port 8080",
+    "start": "vite preview --host 0.0.0.0 --port 8080",
     "server": "node server.js"
   },
   "dependencies": {
