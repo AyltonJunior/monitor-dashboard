@@ -1,0 +1,36 @@
+name: monitor-dashboard
+services:
+- name: web
+  github:
+    branch: master
+    deploy_on_push: true
+    repo: AyltonJunior/monitor-dashboard
+  build_command: npm install && npm run build
+  run_command: npm run preview -- --host 0.0.0.0 --port 8080
+  environment_slug: node-js
+  instance_size_slug: basic-xxs
+  instance_count: 1
+  routes:
+  - path: /
+  envs:
+  - key: VITE_FIREBASE_API_KEY
+    scope: RUN_TIME
+    type: SECRET
+  - key: VITE_FIREBASE_AUTH_DOMAIN
+    scope: RUN_TIME
+    type: SECRET
+  - key: VITE_FIREBASE_PROJECT_ID
+    scope: RUN_TIME
+    type: SECRET
+  - key: VITE_FIREBASE_STORAGE_BUCKET
+    scope: RUN_TIME
+    type: SECRET
+  - key: VITE_FIREBASE_MESSAGING_SENDER_ID
+    scope: RUN_TIME
+    type: SECRET
+  - key: VITE_FIREBASE_APP_ID
+    scope: RUN_TIME
+    type: SECRET
+  - key: VITE_FIREBASE_DATABASE_URL
+    scope: RUN_TIME
+    type: SECRET
